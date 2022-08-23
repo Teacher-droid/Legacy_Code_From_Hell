@@ -1,17 +1,36 @@
+# frozen_string_literal: true
+
+require 'rubygems'
+require_relative '../lib/ingredient'
+require_relative '../lib/snack'
+require_relative '../lib/sandwich'
+require_relative '../legacy_app'
 
 
 ########## Partie RSpec ##########
 RSpec.describe "Shit load of crap you were told would be 'state of the art' during the interview..." do
-  # # Ingredient
-  it 'has a name'
+  describe Ingredient do
+    it 'has a name' do
+      expect(subject).to respond_to(:name)
+    end
 
-  # ## Ingredient's name
-  it 'is gloubiboulga'
-  it 'or is the given name in argument'
+# ## Ingredient's name
+    describe '#name' do
+      it 'is gloubiboulga' do
+        expect(subject.name).to eq('gloubiboulga')
+      end
+
+      it 'or is the given name in argument' do
+        expect(Ingredient.new('toto').name).to eq('toto')
+      end
+    end
+  end
 
   # # Snack
-  it 'is shareable returns true'
-  it "has no '#brick' method"
+  describe Snack do
+    it 'is shareable returns true' do
+      expect(subject).to be_shareable
+    end
 
   # # Sandwich
   it 'knows how many have been made so far'
